@@ -25,10 +25,9 @@ def crc_check(message, divisor):
         return False  # Error detected
     return True  # No error detected
 
-# Predefined message to send (in binary form)
-message = '1101011011'  # Example message
-# CRC Polynomial (4 bits, x^3 + x + 1)
-divisor = '1011'  
+# User input for message and divisor
+message = input("Enter the binary message: ")
+divisor = input("Enter the binary divisor (e.g., 1011 for x^3 + x + 1): ")
 
 # Step 1: Append CRC to message before transmission
 remainder = crc_remainder(message, divisor)
@@ -39,8 +38,7 @@ print(f"Calculated CRC: {remainder}")
 print(f"Transmitted Message: {transmitted_message}")
 
 # Step 2: Simulate receiving the message and checking for errors
-# Here, we can either simulate a correct received message or introduce an error manually
-received_message = '1101011111'  # Change this to simulate errors
+received_message = input("Enter the received message (with CRC): ")
 
 # Check for errors in the received message
 if crc_check(received_message, divisor):
